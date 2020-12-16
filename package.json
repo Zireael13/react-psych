@@ -1,6 +1,6 @@
 {
   "name": "react-psych",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Framework for building psycology experiments in React. Inspired by jsPsych.",
   "repository": "https://github.com/Zireael13/react-psych",
   "author": "Matt Wilkinson <mattwilki17@gmail.com>",
@@ -21,6 +21,7 @@
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
+    "acorn-jsx": "^5.3.1",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
