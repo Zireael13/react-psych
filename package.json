@@ -1,6 +1,6 @@
 {
   "name": "react-psych",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Framework for building psycology experiments in React. Inspired by jsPsych.",
   "repository": "https://github.com/Zireael13/react-psych",
   "author": "Matt Wilkinson <mattwilki17@gmail.com>",
@@ -9,7 +9,7 @@
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rm -rf ./dist && tsc",
     "test": "jest"
   },
   "dependencies": {
@@ -17,6 +17,8 @@
   },
   "devDependencies": {
     "@chakra-ui/react": "^1.0.3",
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.1",
     "@testing-library/react-hooks": "^3.7.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
@@ -34,6 +36,7 @@
     "prettier": "^2.2.1",
     "react": "^17.0.1",
     "rollup": "^2.35.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.29.0",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
