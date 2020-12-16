@@ -1,6 +1,6 @@
 {
   "name": "react-psych",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Framework for building psycology experiments in React. Inspired by jsPsych.",
   "repository": "https://github.com/Zireael13/react-psych",
   "author": "Matt Wilkinson <mattwilki17@gmail.com>",

@@ -13,7 +13,7 @@ type ImageQuestionProps = TimelineNodeProps & {
   responses: ImageResponse[]
 }
 
-const ImageQuestion: React.FC<ImageQuestionProps> = ({
+export const ImageQuestion: React.FC<ImageQuestionProps> = ({
   stimulus,
   responses,
   onFinish,
@@ -73,5 +73,3 @@ const ImageQuestion: React.FC<ImageQuestionProps> = ({
     </VStack>
   )
 }
-
-export default ImageQuestion

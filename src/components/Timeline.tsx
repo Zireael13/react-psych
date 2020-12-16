@@ -19,7 +19,7 @@ export const Wrapper = ({
   return (children as unknown) as JSX.Element
 }
 
-const Timeline: React.FC<TimelineProps> = ({ children }) => {
+export const Timeline: React.FC<TimelineProps> = ({ children }) => {
   const [activeNode, setActiveNode] = useState(0)
   const [timelineData, setTimelineData] = useState<defaultUserResponse[]>([])
 
@@ -56,5 +56,3 @@ const Timeline: React.FC<TimelineProps> = ({ children }) => {
 
   return <div>{childrenWithProps}</div>
 }
-
-export default Timeline
