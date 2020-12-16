@@ -4,9 +4,10 @@
     "alwaysStrict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "lib": ["dom", "es2017"],
+    "isolatedModules": false,
+    "jsx": "react",
+    "sourceMap": true,
+    "lib": ["dom", "es2018", "ESNext"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -19,7 +20,8 @@
     "target": "esnext",
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "declaration": true
+    "declaration": true,
+    "outDir": "dist",
 
   },
   "exclude": ["node_modules"],

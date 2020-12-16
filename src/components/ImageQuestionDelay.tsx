@@ -6,6 +6,7 @@ import {
   experimentElement,
   defaultUserResponse,
   questionState,
+  ImageResponse,
 } from '../types'
 import { NextChakraImage } from '../util-components/NextChakraImage'
 
@@ -14,7 +15,7 @@ interface ImageQuestionProps {
   setElement: (element: experimentElement) => void
 }
 
-const ImageQuestion: React.FC<ImageQuestionProps> = ({
+export const ImageQuestion: React.FC<ImageQuestionProps> = ({
   questions,
   setElement,
 }) => {
@@ -40,7 +41,7 @@ const ImageQuestion: React.FC<ImageQuestionProps> = ({
     const newResponses = [
       ...responses,
       {
-        question: currentQuestion,
+        node: currentQuestion,
         response,
         correct: isCorrect,
         time: interval,
@@ -89,16 +90,19 @@ const ImageQuestion: React.FC<ImageQuestionProps> = ({
   } else if (questionElement === 'responses') {
     body = (
       <HStack spacing={4}>
-        {questions[currentQuestion].responses.map((option, idx) => (
-          <Link key={idx} onClick={() => handleResponseClick(idx)}>
-            <NextChakraImage src={option.answerImage} dimensions={[200, 200]} />
-          </Link>
-        ))}
+        {questions[currentQuestion].responses.map(
+          (option: ImageResponse, idx: number) => (
+            <Link key={idx} onClick={() => handleResponseClick(idx)}>
+              <NextChakraImage
+                src={option.answerImage}
+                dimensions={[200, 200]}
+              />
+            </Link>
+          )
+        )}
       </HStack>
     )
   }
 
   return <Flex mt={6}>{body}</Flex>
 }
-
-export default ImageQuestion
