@@ -1,6 +1,6 @@
 {
   "name": "react-psych",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Framework for building psycology experiments in React. Inspired by jsPsych.",
   "repository": "https://github.com/Zireael13/react-psych",
   "author": "Matt Wilkinson <mattwilki17@gmail.com>",
@@ -9,7 +9,7 @@
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rm -rf ./dist && tsc",
+    "build": "rollup -c",
     "test": "jest"
   },
   "dependencies": {
