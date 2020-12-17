@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { TimelineNodeProps, defaultUserResponse } from '../types'
 import { NextChakraImage } from '../util-components/NextChakraImage'
 
-type ImageResponse = {
+export type ImageResponse = {
   answerImage: string
   correct?: boolean
 }
 
-type ImageQuestionProps = TimelineNodeProps & {
+export type ImageQuestionProps = TimelineNodeProps & {
   stimulus: string
   responses: ImageResponse[]
 }

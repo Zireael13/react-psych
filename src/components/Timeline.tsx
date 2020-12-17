@@ -7,15 +7,11 @@ import React, {
 } from 'react'
 import { defaultUserResponse } from '../types'
 
-interface TimelineProps {
+export interface TimelineProps {
   children: ReactChild | ReactChildren
 }
 
-export const Wrapper = ({
-  children,
-}: {
-  children?: ReactNode
-}): JSX.Element => {
+const Wrapper = ({ children }: { children?: ReactNode }): JSX.Element => {
   return (children as unknown) as JSX.Element
 }
 
