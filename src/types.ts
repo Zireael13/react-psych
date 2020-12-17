@@ -7,6 +7,7 @@ export type TextQuestionType = {
   answers: TextAnswer[]
   correct: number
 }
+//comment
 
 export type ImageResponse = {
   answerImage: string
