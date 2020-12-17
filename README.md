@@ -1,6 +1,6 @@
 # React-Psych
 
-React components for quickly building psychological experiments.
+React components for quickly building psych experiments.
 
 Inspired by [jsPsych](https://www.jspsych.org/).
 
