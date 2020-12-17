@@ -23,17 +23,22 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
 }) => {
   const [responseStart, setResponseStart] = useState(Date.now())
 
-  if (index === undefined || onFinish === undefined || isActive === undefined) {
-    throw new Error(
-      'timeline props not passed. Please put element inside a Timeline.'
-    )
-  }
   const handleResponseClick = (idx: number): void => {
     const responseEnd = Date.now()
 
     const responseTime = responseEnd - responseStart
 
     const isCorrect = idx === correct - 1
+
+    if (
+      index === undefined ||
+      onFinish === undefined ||
+      isActive === undefined
+    ) {
+      throw new Error(
+        'timeline props not passed. Please put element inside a Timeline.'
+      )
+    }
 
     const userResponse: defaultUserResponse = {
       node: index,
