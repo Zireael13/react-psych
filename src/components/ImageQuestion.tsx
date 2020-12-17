@@ -1,17 +1,13 @@
 import { HStack, VStack, Link } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import { TimelineNodeProps, defaultUserResponse } from '../types'
+import {
+  TimelineNodeProps,
+  defaultUserResponse,
+  ImageQuestionFields,
+} from '../types'
 import { NextChakraImage } from '../util-components/NextChakraImage'
 
-export type ImageResponse = {
-  answerImage: string
-}
-
-export type ImageQuestionProps = TimelineNodeProps & {
-  stimulus: string
-  responses: ImageResponse[]
-  correct: number
-}
+export type ImageQuestionProps = TimelineNodeProps & ImageQuestionFields
 
 export const ImageQuestion: React.FC<ImageQuestionProps> = ({
   stimulus,
@@ -46,7 +42,9 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
 
   useEffect(() => {
     setResponseStart(Date.now())
-  }, [])
+  }, [isActive])
+
+  if (!isActive) return null
 
   return (
     <VStack>

@@ -8,7 +8,7 @@ import React, {
 import { defaultUserResponse } from '../types'
 
 export interface TimelineProps {
-  children: ReactChild | ReactChildren
+  children: ReactChild | ReactChildren | JSX.Element[]
 }
 
 const Wrapper = ({ children }: { children?: ReactNode }): JSX.Element => {

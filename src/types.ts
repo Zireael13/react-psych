@@ -12,8 +12,8 @@ export type ImageResponse = {
   answerImage: string
 }
 
-export type ImageQuestionType = {
-  prompt: string
+export type ImageQuestionFields = {
+  stimulus: string
   responses: ImageResponse[]
   correct: number
 }

@@ -2,7 +2,7 @@ import { Flex, HStack, Link, Text } from '@chakra-ui/react'
 import delay from 'delay'
 import React, { useState, useEffect } from 'react'
 import {
-  ImageQuestionType,
+  ImageQuestionFields,
   experimentElement,
   defaultUserResponse,
   questionState,
@@ -11,7 +11,7 @@ import {
 import { NextChakraImage } from '../util-components/NextChakraImage'
 
 interface ImageQuestionProps {
-  questions: ImageQuestionType[]
+  questions: ImageQuestionFields[]
   setElement: (element: experimentElement) => void
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "react-psych",
-  "version": "1.0.11",
+  "version": "1.1.0",
   "description": "Framework for building psycology experiments in React. Inspired by jsPsych.",
   "repository": "https://github.com/Zireael13/react-psych",
   "author": "Matt Wilkinson <mattwilki17@gmail.com>",
@@ -12,7 +12,7 @@
     "/dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rm -rf ./dist && rollup -c",
     "test": "jest",
     "run:example": "cd example && yarn dev"
   },
