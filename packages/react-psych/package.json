@@ -19,14 +19,13 @@
     "react": "^16.8.x || ^17.x"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.0.3",
-    "@chakra-ui/icons": "^1.0.3",
-    "delay": "^4.4.0"
+    "delay": "^4.4.0",
+    "react-keyboard-hooks": "^1.2.3"
   },
   "scripts": {
     "build:rollup": "rm -rf ./dist && rollup -c",
     "build": "rm -rf ./dist && tsc",
-    "watch": "tsc -w",
+    "watch": "rm -rf ./dist && tsc -w",
     "test": "jest",
     "watch:rollup": "rm -rf ./dist && rollup -c -w"
   }

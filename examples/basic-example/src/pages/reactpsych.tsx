@@ -1,5 +1,13 @@
+import { Heading } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 import React from 'react'
-import { ImageQuestion, Timeline, createQuestionList } from 'react-psych'
+import {
+  createQuestionList,
+  ImageQuestion,
+  ImageQuestionList,
+  TextScreen,
+  Timeline,
+} from 'react-psych'
 
 interface reactpsychProps {}
 
@@ -18,14 +26,22 @@ const questionList = createQuestionList('DRT', 12, [
   4,
 ])
 
-const reactpsych: React.FC<reactpsychProps> = () => {
+const ReactPsych: React.FC<reactpsychProps> = () => {
+  const router = useRouter()
+
   return (
-    <Timeline>
-      <ImageQuestion {...questionList[0]} />
-      <ImageQuestion {...questionList[1]} />
-      <ImageQuestion {...questionList[2]} />
+    <Timeline onFinish={() => router.push('/')}>
+      <TextScreen buttonText="begin">
+        <Heading>Hello world</Heading>
+      </TextScreen>
+      {questionList.map((q, idx) => {
+        return <ImageQuestion key={idx} {...q} />
+      })}
+      <TextScreen buttonText="finish">
+        <Heading>Done!</Heading>
+      </TextScreen>
     </Timeline>
   )
 }
 
-export default reactpsych
+export default ReactPsych

@@ -1,26 +1,31 @@
-import { Button } from '@chakra-ui/react'
+import { Button, VStack } from '@chakra-ui/react'
 import React from 'react'
+import { useKey } from 'react-keyboard-hooks'
 import { getResponseTime, useResponseStart } from '../hooks/useResponseStart'
 import { TimelineNodeProps } from '../types'
 import { TimelineNodeError } from '../utils/errors'
 
-interface InstructionsProps {
+interface TextScreen {
   timeline?: TimelineNodeProps
   buttonText: string
+  inputKey?: string
 }
 
-const Instructions: React.FC<InstructionsProps> = ({
+export const TextScreen: React.FC<TextScreen> = ({
   children,
   timeline,
   buttonText,
+  inputKey = ' ',
 }) => {
   if (!timeline) {
     throw new TimelineNodeError()
   }
 
+  useKey(inputKey, () => handleInput())
+
   const responseStart = useResponseStart(timeline.isActive)
 
-  const handleButtonClick = (): void => {
+  const handleInput = (): void => {
     const responseTime = getResponseTime(responseStart)
     timeline.onFinish({
       node: timeline.index,
@@ -35,11 +40,11 @@ const Instructions: React.FC<InstructionsProps> = ({
   }
 
   return (
-    <>
+    <VStack>
       {children}
-      <Button onClick={handleButtonClick}>{buttonText}</Button>
-    </>
+      <Button colorScheme="blue" onClick={handleInput}>
+        {buttonText}
+      </Button>
+    </VStack>
   )
 }
-
-export default Instructions

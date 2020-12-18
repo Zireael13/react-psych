@@ -8,14 +8,15 @@ import React, {
 import { defaultUserResponse } from '../types'
 
 export interface TimelineProps {
-  children: ReactChild | ReactChildren | JSX.Element[]
+  children: ReactChild | ReactChildren | JSX.Element[] | any
+  onFinish: () => void
 }
 
 const Wrapper = ({ children }: { children?: ReactNode }): JSX.Element => {
   return (children as unknown) as JSX.Element
 }
 
-export const Timeline: React.FC<TimelineProps> = ({ children }) => {
+export const Timeline: React.FC<TimelineProps> = ({ children, onFinish }) => {
   const [activeNode, setActiveNode] = useState(0)
   const [timelineData, setTimelineData] = useState<defaultUserResponse[]>([])
 
@@ -30,6 +31,10 @@ export const Timeline: React.FC<TimelineProps> = ({ children }) => {
     if (activeNode < nodeCount - 1) {
       setActiveNode(activeNode + 1)
     }
+    if (activeNode === nodeCount - 1) {
+      console.log('finished')
+      onFinish()
+    }
   }
 
   useEffect(() => {
@@ -43,9 +48,11 @@ export const Timeline: React.FC<TimelineProps> = ({ children }) => {
     Wrapper({ children }),
     (child, index) => {
       return React.cloneElement(child, {
-        onFinish: onNodeFinish,
-        index,
-        isActive: index === activeNode,
+        timeline: {
+          onFinish: onNodeFinish,
+          index,
+          isActive: index === activeNode,
+        },
       })
     }
   )

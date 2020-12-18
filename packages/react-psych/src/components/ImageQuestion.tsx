@@ -49,7 +49,7 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
   return (
     <VStack>
       <NextChakraImage src={stimulus} dimensions={[400, 400]} />
-      <HStack spacing={4}>
+      <HStack spacing={15}>
         {responses.map((response, idx) => (
           <Link key={idx} onClick={() => handleResponseClick(idx)}>
             <NextChakraImage

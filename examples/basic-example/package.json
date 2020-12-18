@@ -11,8 +11,6 @@
     "@chakra-ui/icons": "^1.0.0",
     "@chakra-ui/react": "^1.0.0",
     "@chakra-ui/theme-tools": "1.0.0",
-    "@emotion/react": "11.1.1",
-    "@emotion/styled": "11.0.0",
     "framer-motion": "^2.9.4",
     "next": "latest",
     "next-transpile-modules": "^6.0.0",
