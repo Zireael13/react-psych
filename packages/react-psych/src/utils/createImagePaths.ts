@@ -7,10 +7,9 @@ const createStimulusPath = (questionPath: string) => {
 }
 
 const createQuestionPath = (
-  experiment = drtFilePath,
+  experimentPath = drtFilePath,
   questionNumber: number
-) => {
-  const experimentPath = `/react-psych/${experiment}`
+): string => {
   const questionPath = `/question${questionNumber}`
   return experimentPath + questionPath
 }

@@ -4,14 +4,13 @@ import React from 'react'
 import {
   createQuestionList,
   ImageQuestion,
-  ImageQuestionList,
   TextScreen,
   Timeline,
 } from 'react-psych'
 
 interface reactpsychProps {}
 
-const questionList = createQuestionList('DRT', 12, [
+const questionList = createQuestionList('/react-psych/DRT', 12, [
   1,
   2,
   3,
