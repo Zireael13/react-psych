@@ -1,4 +1,4 @@
-import { Heading } from '@chakra-ui/react'
+import { Flex, Heading } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import React from 'react'
 import {
@@ -21,17 +21,21 @@ const ReactPsych: React.FC<reactpsychProps> = () => {
   const router = useRouter()
 
   return (
-    <Timeline onFinish={() => router.push('/')}>
-      <TextScreen buttonText="begin">
-        <Heading>Hello world</Heading>
-      </TextScreen>
-      {questionList.map((q, idx) => {
-        return <ImageQuestion key={idx} {...q} />
-      })}
-      <TextScreen buttonText="finish">
-        <Heading>Done!</Heading>
-      </TextScreen>
-    </Timeline>
+    <Flex align="center" justify="center">
+      <Flex shadow="md" align="center" justify="center" my={5}>
+        <Timeline onFinish={() => router.push('/')} size="85">
+          <TextScreen buttonText="begin">
+            <Heading>Hello world</Heading>
+          </TextScreen>
+          {questionList.map((q, idx) => {
+            return <ImageQuestion key={idx} {...q} />
+          })}
+          <TextScreen buttonText="finish">
+            <Heading>Done!</Heading>
+          </TextScreen>
+        </Timeline>
+      </Flex>
+    </Flex>
   )
 }
 

@@ -1,4 +1,4 @@
-import { HStack, Link, VStack } from '@chakra-ui/react'
+import { HStack, Link, Text, VStack } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import {
   defaultUserResponse,
@@ -47,15 +47,24 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
   if (!timeline.isActive) return null
 
   return (
-    <VStack>
-      <NextChakraImage src={stimulus} dimensions={[400, 400]} />
+    <VStack spacing={10}>
+      <NextChakraImage height="40vh" width="40vw" src={stimulus} />
       <HStack spacing={15}>
         {responses.map((response, idx) => (
-          <Link key={idx} onClick={() => handleResponseClick(idx)}>
-            <NextChakraImage
-              src={response.answerImage}
-              dimensions={[200, 200]}
-            />
+          <Link
+            boxShadow="sm"
+            _hover={{ boxShadow: 'outline' }}
+            key={idx}
+            onClick={() => handleResponseClick(idx)}
+          >
+            <VStack spacing={2} p={2}>
+              <NextChakraImage
+                height="15vh"
+                width="15vw"
+                src={response.answerImage}
+              />
+              <Text>{idx + 1}</Text>
+            </VStack>
           </Link>
         ))}
       </HStack>

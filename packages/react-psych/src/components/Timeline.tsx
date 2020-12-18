@@ -1,3 +1,4 @@
+import { Flex } from '@chakra-ui/react'
 import React, {
   ReactChild,
   ReactChildren,
@@ -10,13 +11,18 @@ import { defaultUserResponse } from '../types'
 export interface TimelineProps {
   children: ReactChild | ReactChildren | JSX.Element[] | any
   onFinish: () => void
+  size: string
 }
 
 const Wrapper = ({ children }: { children?: ReactNode }): JSX.Element => {
   return (children as unknown) as JSX.Element
 }
 
-export const Timeline: React.FC<TimelineProps> = ({ children, onFinish }) => {
+export const Timeline: React.FC<TimelineProps> = ({
+  children,
+  onFinish,
+  size,
+}) => {
   const [activeNode, setActiveNode] = useState(0)
   const [timelineData, setTimelineData] = useState<defaultUserResponse[]>([])
 
@@ -57,5 +63,9 @@ export const Timeline: React.FC<TimelineProps> = ({ children, onFinish }) => {
     }
   )
 
-  return <div>{childrenWithProps}</div>
+  return (
+    <Flex h={`${size}vh`} w={`${size}vw`} justify="center" align="center">
+      {childrenWithProps}
+    </Flex>
+  )
 }

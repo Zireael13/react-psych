@@ -1,6 +1,6 @@
-import React from 'react'
-import { chakra, ChakraProps } from '@chakra-ui/react'
+import { Box, BoxProps, ChakraProps } from '@chakra-ui/react'
 import NextImage from 'next/image'
+import React from 'react'
 
 type NextImageProps = Parameters<typeof NextImage>[0]
 
@@ -9,9 +9,16 @@ export type NextChakraImageProps = Omit<ChakraProps, 'width' | 'height'> &
     dimensions: [number, number]
   }
 
-export const NextChakraImage: React.FC<NextChakraImageProps> = chakra(
-  ({ dimensions, ...props }) => {
-    const [width, height] = dimensions
-    return <NextImage {...props} width={width} height={height} />
-  }
-)
+export type ImageProps = Omit<BoxProps, 'position'> & {
+  height: string | number
+  width: string | number
+  src: string
+}
+
+export const NextChakraImage: React.FC<ImageProps> = ({ src, ...props }) => {
+  return (
+    <Box position="relative" {...props}>
+      <NextImage src={src} layout="fill" objectFit="contain" />
+    </Box>
+  )
+}

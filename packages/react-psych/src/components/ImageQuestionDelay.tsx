@@ -1,14 +1,13 @@
 import { Flex, HStack, Link, Text } from '@chakra-ui/react'
 import delay from 'delay'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
-  ImageQuestionFields,
-  experimentElement,
   defaultUserResponse,
-  questionState,
+  experimentElement,
+  ImageQuestionFields,
   ImageResponse,
+  questionState,
 } from '../types'
-import { NextChakraImage } from '../util-components/NextChakraImage'
 
 interface ImageQuestionProps {
   questions: ImageQuestionFields[]
@@ -81,22 +80,14 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
   let body = <Text>loading...</Text>
 
   if (questionElement === 'prompt') {
-    body = (
-      <NextChakraImage
-        src={questions[currentQuestion].stimulus}
-        dimensions={[400, 400]}
-      />
-    )
+    body = <Text>loading...</Text>
   } else if (questionElement === 'responses') {
     body = (
       <HStack spacing={4}>
         {questions[currentQuestion].responses.map(
           (option: ImageResponse, idx: number) => (
             <Link key={idx} onClick={() => handleResponseClick(idx)}>
-              <NextChakraImage
-                src={option.answerImage}
-                dimensions={[200, 200]}
-              />
+              {option.answerImage}
             </Link>
           )
         )}
