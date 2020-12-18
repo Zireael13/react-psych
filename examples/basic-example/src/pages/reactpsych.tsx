@@ -1,6 +1,5 @@
 import React from 'react'
-import { ImageQuestion, Timeline } from '../react-psych'
-import { createQuestionList } from '../react-psych/utils/createImagePaths'
+import { ImageQuestion, Timeline, createQuestionList } from 'react-psych'
 
 interface reactpsychProps {}
 

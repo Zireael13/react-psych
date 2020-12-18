@@ -25,13 +25,13 @@ export type questionState = 'prompt' | 'responses' | null
 
 export type defaultUserResponse = {
   node: number
-  response: number
-  correct: boolean
-  time: number
+  response: number | string | null
+  correct: boolean | null
+  time: number | null
 }
 
 export type TimelineNodeProps = {
-  onFinish?: (userResponse: defaultUserResponse) => void
-  isActive?: boolean
-  index?: number
+  onFinish: (userResponse: defaultUserResponse) => void
+  isActive: boolean
+  index: number
 }

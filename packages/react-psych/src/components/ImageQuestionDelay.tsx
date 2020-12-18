@@ -83,7 +83,7 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
   if (questionElement === 'prompt') {
     body = (
       <NextChakraImage
-        src={questions[currentQuestion].prompt}
+        src={questions[currentQuestion].stimulus}
         dimensions={[400, 400]}
       />
     )

@@ -4,13 +4,13 @@
     "alwaysStrict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "jsx": "preserve",
     "sourceMap": true,
     "lib": ["dom", "es2018", "ESNext"],
     "module": "esnext",
     "moduleResolution": "node",
-    "noEmit": true,
+    "noEmit": false,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -21,9 +21,5 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "declaration": true,
-    "outDir": "dist",
-
-  },
-  "exclude": ["node_modules"],
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  }
 }

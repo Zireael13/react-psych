@@ -1,29 +1,29 @@
-import { HStack, VStack, Link } from '@chakra-ui/react'
+import { HStack, Link, VStack } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import {
-  TimelineNodeProps,
   defaultUserResponse,
   ImageQuestionFields,
+  TimelineNodeProps,
 } from '../types'
 import { NextChakraImage } from '../util-components/NextChakraImage'
+import { TimelineNodeError } from '../utils/errors'
 
-export type ImageQuestionProps = TimelineNodeProps & ImageQuestionFields
+export type ImageQuestionProps = ImageQuestionFields & {
+  timeline?: TimelineNodeProps
+}
 
 export const ImageQuestion: React.FC<ImageQuestionProps> = ({
   stimulus,
   responses,
-  onFinish,
-  index,
-  isActive,
+  timeline,
   correct,
 }) => {
   const [responseStart, setResponseStart] = useState(Date.now())
 
-  if (index === undefined || onFinish === undefined || isActive === undefined) {
-    throw new Error(
-      'timeline props not passed. Please put element inside a Timeline.'
-    )
+  if (!timeline) {
+    throw new TimelineNodeError()
   }
+
   const handleResponseClick = (idx: number): void => {
     const responseEnd = Date.now()
 
@@ -32,19 +32,19 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
     const isCorrect = idx === correct - 1
 
     const userResponse: defaultUserResponse = {
-      node: index,
+      node: timeline.index,
       response: idx,
       correct: isCorrect,
       time: responseTime,
     }
-    onFinish(userResponse)
+    timeline.onFinish(userResponse)
   }
 
   useEffect(() => {
     setResponseStart(Date.now())
-  }, [isActive])
+  }, [timeline.isActive])
 
-  if (!isActive) return null
+  if (!timeline.isActive) return null
 
   return (
     <VStack>
