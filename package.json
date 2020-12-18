@@ -12,7 +12,8 @@
     "build": "yarn workspace react-psych build",
     "test": "yarn workspace react-psych test",
     "run:example": "yarn workspace next-example dev",
-    "watch": "yarn workspace react-psych watch"
+    "watch": "yarn workspace react-psych watch",
+    "publish": "yarn workspace react-psych publish"
   },
   "workspaces": [
     "packages/*",

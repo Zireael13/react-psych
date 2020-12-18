@@ -2,7 +2,7 @@ import { ImageResponse, ImageQuestionFields } from '../types'
 
 const drtFilePath = '/react-psych/DRT/'
 
-const createStimulusPath = (questionPath: string) => {
+const createStimulusPath = (questionPath: string): string => {
   return questionPath + '/stimulus.png'
 }
 
@@ -28,12 +28,13 @@ const createResponseArray = (
 const createQuestion = (
   experiment: string,
   questionNumber: number,
-  correct: number
+  correct: number,
+  numResponses: number
 ): ImageQuestionFields => {
   const questionPath = createQuestionPath(experiment, questionNumber)
   return {
     stimulus: createStimulusPath(questionPath),
-    responses: createResponseArray(questionPath),
+    responses: createResponseArray(questionPath, numResponses),
     correct,
   }
 }
@@ -41,7 +42,8 @@ const createQuestion = (
 export const createQuestionList = (
   experiment: string,
   numQuestions: number,
-  correctResponses: number[]
+  correctResponses: number[],
+  numResponses: number
 ): ImageQuestionFields[] => {
   if (correctResponses.length !== numQuestions) {
     throw new Error(
@@ -52,7 +54,9 @@ export const createQuestionList = (
   const questionList: ImageQuestionFields[] = []
 
   for (let i = 0; i < numQuestions; i++) {
-    questionList.push(createQuestion(experiment, i + 1, correctResponses[i]))
+    questionList.push(
+      createQuestion(experiment, i + 1, correctResponses[i], numResponses)
+    )
   }
   return questionList
 }

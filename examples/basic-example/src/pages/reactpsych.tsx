@@ -10,20 +10,12 @@ import {
 
 interface reactpsychProps {}
 
-const questionList = createQuestionList('/react-psych/DRT', 12, [
-  1,
-  2,
-  3,
-  4,
-  1,
-  2,
-  3,
-  4,
-  1,
-  2,
-  3,
-  4,
-])
+const questionList = createQuestionList(
+  '/react-psych/DRT',
+  12,
+  [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4],
+  4
+)
 
 const ReactPsych: React.FC<reactpsychProps> = () => {
   const router = useRouter()
