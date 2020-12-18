@@ -48,7 +48,13 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
 
   return (
     <VStack spacing={10}>
-      <NextChakraImage height="40vh" width="40vw" src={stimulus} />
+      <NextChakraImage
+        height="40vh"
+        width="40vw"
+        src={stimulus}
+        quality={100}
+        loading="eager"
+      />
       <HStack spacing={15}>
         {responses.map((response, idx) => (
           <Link
@@ -62,6 +68,8 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
                 height="15vh"
                 width="15vw"
                 src={response.answerImage}
+                quality={100}
+                loading="eager"
               />
               <Text>{idx + 1}</Text>
             </VStack>
