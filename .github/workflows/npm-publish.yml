@@ -31,7 +31,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn
       - run: yarn build
-      - run: yarn publish
+      - run: yarn workspace react-psych publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
