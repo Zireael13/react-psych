@@ -41,6 +41,23 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
   }
 
   useEffect(() => {
+    const keyDown = (e: KeyboardEvent): void => {
+      const keyNum = parseInt(e.key)
+      if (keyNum > 0 && keyNum <= responses.length) {
+        handleResponseClick(keyNum - 1)
+      }
+    }
+
+    if (timeline.isActive) {
+      window.addEventListener('keydown', keyDown)
+    }
+
+    return () => {
+      window.removeEventListener('keydown', keyDown)
+    }
+  }, [timeline.isActive])
+
+  useEffect(() => {
     setResponseStart(Date.now())
   }, [timeline.isActive])
 
