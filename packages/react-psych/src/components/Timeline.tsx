@@ -29,9 +29,8 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   const nodeCount = React.Children.count(children)
 
-  const validKeys = [' ', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-
   useEffect(() => {
+    const validKeys = [' ', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     const keyDown = (e: KeyboardEvent): void => {
       console.log(e.key)
       if (validKeys.includes(e.key)) {
@@ -45,7 +44,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     return () => {
       window.removeEventListener('keydown', keyDown)
     }
-  }, [setKeyPressed])
+  }, [])
 
   const onNodeFinish = (nodeData: defaultUserResponse): void => {
     console.log(`Node ${activeNode} finished`)

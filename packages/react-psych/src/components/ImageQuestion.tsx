@@ -66,7 +66,6 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
       <HStack spacing={15}>
         {responses.map((response, idx) => (
           <Link
-            //boxShadow="md"
             bgColor="gray.50"
             borderWidth="1px"
             borderRadius="lg"
