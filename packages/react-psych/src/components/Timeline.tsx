@@ -8,7 +8,6 @@ import React, {
   useState,
 } from 'react'
 import { defaultUserResponse } from '../types'
-import useSSR from 'use-ssr'
 
 export interface TimelineProps {
   children: ReactChild | ReactChildren | JSX.Element[] | any
@@ -25,7 +24,6 @@ export const Timeline: React.FC<TimelineProps> = ({
   onFinish,
   size,
 }) => {
-  const { isBrowser } = useSSR()
   const [activeNode, setActiveNode] = useState(0)
   const [timelineData, setTimelineData] = useState<defaultUserResponse[]>([])
   const [keyPressed, setKeyPressed] = useState<string | null>(null)
