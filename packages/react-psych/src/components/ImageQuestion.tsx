@@ -53,10 +53,8 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
     }
   }, [timeline.isActive, timeline.keyPressed, responses.length])
 
-  if (!timeline.isActive) return null
-
   return (
-    <VStack spacing={10}>
+    <VStack spacing={10} display={timeline.isActive ? 'flex' : 'none'}>
       <NextChakraImage
         height="40vh"
         width="40vw"
