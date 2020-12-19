@@ -25,8 +25,21 @@ export const Timeline: React.FC<TimelineProps> = ({
 }) => {
   const [activeNode, setActiveNode] = useState(0)
   const [timelineData, setTimelineData] = useState<defaultUserResponse[]>([])
+  const [keyPressed, setKeyPressed] = useState<string | null>(null)
 
   const nodeCount = React.Children.count(children)
+
+  useEffect(() => {
+    const keyDown = (e: KeyboardEvent): void => {
+      setKeyPressed(e.key)
+    }
+
+    window.addEventListener('keydown', keyDown)
+
+    return () => {
+      window.removeEventListener('keydown', keyDown)
+    }
+  }, [setKeyPressed])
 
   const onNodeFinish = (nodeData: defaultUserResponse): void => {
     console.log(`Node ${activeNode} finished`)
@@ -34,6 +47,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     setTimelineData((prevData) => {
       return [...prevData, nodeData]
     })
+    setKeyPressed(null)
     if (activeNode < nodeCount - 1) {
       setActiveNode(activeNode + 1)
     }
@@ -58,6 +72,7 @@ export const Timeline: React.FC<TimelineProps> = ({
           onFinish: onNodeFinish,
           index,
           isActive: index === activeNode,
+          keyPressed,
         },
       })
     }

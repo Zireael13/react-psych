@@ -34,4 +34,5 @@ export type TimelineNodeProps = {
   onFinish: (userResponse: defaultUserResponse) => void
   isActive: boolean
   index: number
+  keyPressed: string | null
 }

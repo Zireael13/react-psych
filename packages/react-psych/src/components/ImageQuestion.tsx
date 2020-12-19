@@ -24,7 +24,7 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
     throw new TimelineNodeError()
   }
 
-  const handleResponseClick = (idx: number): void => {
+  const handleResponse = (idx: number): void => {
     const responseEnd = Date.now()
 
     const responseTime = responseEnd - responseStart
@@ -41,25 +41,17 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
   }
 
   useEffect(() => {
-    const keyDown = (e: KeyboardEvent): void => {
-      const keyNum = parseInt(e.key)
-      if (keyNum > 0 && keyNum <= responses.length) {
-        handleResponseClick(keyNum - 1)
-      }
-    }
-
-    if (timeline.isActive) {
-      window.addEventListener('keydown', keyDown)
-    }
-
-    return () => {
-      window.removeEventListener('keydown', keyDown)
-    }
+    setResponseStart(Date.now())
   }, [timeline.isActive])
 
   useEffect(() => {
-    setResponseStart(Date.now())
-  }, [timeline.isActive])
+    if (timeline.isActive && timeline.keyPressed) {
+      const keyNum = parseInt(timeline.keyPressed)
+      if (keyNum > 0 && keyNum <= responses.length) {
+        handleResponse(keyNum - 1)
+      }
+    }
+  }, [timeline.isActive, timeline.keyPressed, responses.length])
 
   if (!timeline.isActive) return null
 
@@ -78,7 +70,7 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
             boxShadow="sm"
             _hover={{ boxShadow: 'outline' }}
             key={idx}
-            onClick={() => handleResponseClick(idx)}
+            onClick={() => handleResponse(idx)}
           >
             <VStack spacing={2} p={2}>
               <NextChakraImage

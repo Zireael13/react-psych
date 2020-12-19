@@ -1,6 +1,5 @@
 import { Button, VStack } from '@chakra-ui/react'
-import React from 'react'
-import { useKey } from 'react-keyboard-hooks'
+import React, { useEffect } from 'react'
 import { getResponseTime, useResponseStart } from '../hooks/useResponseStart'
 import { TimelineNodeProps } from '../types'
 import { TimelineNodeError } from '../utils/errors'
@@ -21,11 +20,9 @@ export const TextScreen: React.FC<TextScreen> = ({
     throw new TimelineNodeError()
   }
 
-  useKey(inputKey, () => handleInput())
-
   const responseStart = useResponseStart(timeline.isActive)
 
-  const handleInput = (): void => {
+  const handleResponse = (): void => {
     const responseTime = getResponseTime(responseStart)
     timeline.onFinish({
       node: timeline.index,
@@ -35,6 +32,12 @@ export const TextScreen: React.FC<TextScreen> = ({
     })
   }
 
+  useEffect(() => {
+    if (timeline.isActive && timeline.keyPressed === inputKey) {
+      handleResponse()
+    }
+  }, [timeline.isActive, timeline.keyPressed, inputKey])
+
   if (!timeline.isActive) {
     return null
   }
@@ -42,7 +45,7 @@ export const TextScreen: React.FC<TextScreen> = ({
   return (
     <VStack>
       {children}
-      <Button colorScheme="blue" onClick={handleInput}>
+      <Button colorScheme="blue" onClick={handleResponse}>
         {buttonText}
       </Button>
     </VStack>
