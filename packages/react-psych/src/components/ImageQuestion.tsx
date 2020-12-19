@@ -66,7 +66,11 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
       <HStack spacing={15}>
         {responses.map((response, idx) => (
           <Link
-            boxShadow="sm"
+            //boxShadow="md"
+            bgColor="gray.50"
+            borderWidth="1px"
+            borderRadius="lg"
+            p={2}
             _hover={{ boxShadow: 'outline' }}
             key={idx}
             onClick={() => handleResponse(idx)}
@@ -80,7 +84,9 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
                 loading="eager"
                 priority={true}
               />
-              <Text>{idx + 1}</Text>
+              <Text fontSize={20} fontWeight="600">
+                {idx + 1}
+              </Text>
             </VStack>
           </Link>
         ))}
