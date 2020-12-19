@@ -63,6 +63,7 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
         src={stimulus}
         quality={100}
         loading="eager"
+        priority={true}
       />
       <HStack spacing={15}>
         {responses.map((response, idx) => (
@@ -79,6 +80,7 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
                 src={response.answerImage}
                 quality={100}
                 loading="eager"
+                priority={true}
               />
               <Text>{idx + 1}</Text>
             </VStack>

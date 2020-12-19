@@ -29,10 +29,15 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   const nodeCount = React.Children.count(children)
 
+  const validKeys = [' ', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
   useEffect(() => {
     const keyDown = (e: KeyboardEvent): void => {
-      e.preventDefault()
-      setKeyPressed(e.key)
+      console.log(e.key)
+      if (validKeys.includes(e.key)) {
+        e.preventDefault()
+        setKeyPressed(e.key)
+      }
     }
 
     window.addEventListener('keydown', keyDown)
