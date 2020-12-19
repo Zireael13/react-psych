@@ -31,6 +31,7 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   useEffect(() => {
     const keyDown = (e: KeyboardEvent): void => {
+      e.preventDefault()
       setKeyPressed(e.key)
     }
 

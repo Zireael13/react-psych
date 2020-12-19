@@ -21,7 +21,7 @@ const ReactPsych: React.FC<reactpsychProps> = () => {
   const router = useRouter()
 
   return (
-    <Flex align="center" justify="center">
+    <Flex align="center" justify="center" height="150vh">
       <Flex shadow="md" align="center" justify="center" my={5}>
         <Timeline onFinish={() => router.push('/')} size="85">
           <TextScreen buttonText="begin">
