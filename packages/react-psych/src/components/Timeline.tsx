@@ -3,10 +3,12 @@ import React, {
   ReactChild,
   ReactChildren,
   ReactNode,
+  useCallback,
   useEffect,
   useState,
 } from 'react'
 import { defaultUserResponse } from '../types'
+import useSSR from 'use-ssr'
 
 export interface TimelineProps {
   children: ReactChild | ReactChildren | JSX.Element[] | any
@@ -23,28 +25,30 @@ export const Timeline: React.FC<TimelineProps> = ({
   onFinish,
   size,
 }) => {
+  const { isBrowser } = useSSR()
   const [activeNode, setActiveNode] = useState(0)
   const [timelineData, setTimelineData] = useState<defaultUserResponse[]>([])
   const [keyPressed, setKeyPressed] = useState<string | null>(null)
 
   const nodeCount = React.Children.count(children)
-
-  useEffect(() => {
-    const validKeys = [' ', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    const keyDown = (e: KeyboardEvent): void => {
+  const keyDown = useCallback(
+    (e: KeyboardEvent): void => {
+      const validKeys = [' ', '1', '2', '3', '4', '5', '6', '7', '8', '9']
       console.log(e.key)
       if (validKeys.includes(e.key)) {
         e.preventDefault()
         setKeyPressed(e.key)
       }
-    }
+    },
+    [setKeyPressed]
+  )
 
-    window.addEventListener('keydown', keyDown)
-
+  useEffect(() => {
+    window.addEventListener('keydown', keyDown, { capture: true })
     return () => {
-      window.removeEventListener('keydown', keyDown)
+      window.removeEventListener('keydown', keyDown, { capture: true })
     }
-  }, [])
+  }, [keyDown])
 
   const onNodeFinish = (nodeData: defaultUserResponse): void => {
     console.log(`Node ${activeNode} finished`)
