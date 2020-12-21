@@ -40,7 +40,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     },
     [setKeyPressed]
   )
-
+  // find better way to do this
   useEffect(() => {
     window.addEventListener('keydown', keyDown, { capture: true })
     return () => {
