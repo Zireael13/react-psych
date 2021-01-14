@@ -63,11 +63,13 @@ export const Timeline: React.FC<TimelineProps> = ({
     }
   }
 
+  const cbFinish = useCallback(() => onFinish(timelineData), [timelineData])
+
   useEffect(() => {
     if (timelineData.length === nodeCount) {
-      onFinish(timelineData)
+      cbFinish()
     }
-  }, [timelineData, nodeCount, onFinish])
+  }, [timelineData, nodeCount, cbFinish])
 
   const childrenWithProps = React.Children.map(
     Wrapper({ children }),
