@@ -11,7 +11,7 @@ import { defaultUserResponse } from '../types'
 
 export interface TimelineProps {
   children: ReactChild | ReactChildren | JSX.Element[] | any
-  onFinish: () => void
+  onFinish: (data: defaultUserResponse[]) => void
   size: string
 }
 
@@ -60,16 +60,14 @@ export const Timeline: React.FC<TimelineProps> = ({
     }
     if (activeNode === nodeCount - 1) {
       console.log('finished')
-      onFinish()
     }
   }
 
   useEffect(() => {
     if (timelineData.length === nodeCount) {
-      console.log('submitting timeline data')
-      console.log(timelineData)
+      onFinish(timelineData)
     }
-  }, [timelineData, nodeCount])
+  }, [timelineData, nodeCount, onFinish])
 
   const childrenWithProps = React.Children.map(
     Wrapper({ children }),
