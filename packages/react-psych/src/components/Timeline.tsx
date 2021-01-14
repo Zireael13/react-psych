@@ -63,7 +63,10 @@ export const Timeline: React.FC<TimelineProps> = ({
     }
   }
 
-  const cbFinish = useCallback(() => onFinish(timelineData), [timelineData])
+  const cbFinish = useCallback(() => onFinish(timelineData), [
+    timelineData,
+    onFinish,
+  ])
 
   useEffect(() => {
     if (timelineData.length === nodeCount) {
