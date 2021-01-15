@@ -1,5 +1,5 @@
 import { Flex, HStack, Link, Text } from '@chakra-ui/react'
-import delay from 'delay'
+// import delay from 'delay'
 import React, { useEffect, useState } from 'react'
 import {
   defaultUserResponse,
@@ -70,7 +70,8 @@ export const ImageQuestion: React.FC<ImageQuestionProps> = ({
   useEffect(() => {
     if (questionElement === 'prompt') {
       const waitThenShowAnswers = async (time: number): Promise<void> => {
-        await delay(time)
+        // await delay(time)
+        console.log(time)
         setQuestionElement('responses')
       }
       waitThenShowAnswers(5000)
