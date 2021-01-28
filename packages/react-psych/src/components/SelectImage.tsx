@@ -62,13 +62,19 @@ export const SelectImage: React.FC<SelectImageProps> = ({
   useEffect(() => {
     setTimeout(() => {
       setShow(true)
-    }, 5000)
+    }, 1000)
   }, [show])
 
   let body
   if (!show) {
     body = (
-      <Text textAlign="center" alignSelf="center" justifySelf="center">
+      <Text
+        textAlign="center"
+        alignSelf="center"
+        justifySelf="center"
+        fontSize="50px"
+        fontWeight="800"
+      >
         +
       </Text>
     )
@@ -76,8 +82,8 @@ export const SelectImage: React.FC<SelectImageProps> = ({
     body = (
       <>
         <NextChakraImage
-          height="40vh"
-          width="40vw"
+          height="20vh"
+          width="20vw"
           src={stimulus}
           quality={100}
           loading="eager"
@@ -95,7 +101,7 @@ export const SelectImage: React.FC<SelectImageProps> = ({
               key={idx}
               onClick={() => handleClick(idx)}
             >
-              <VStack spacing={2} p={2}>
+              <VStack spacing={4} p={4}>
                 <NextChakraImage
                   height="15vh"
                   width="15vw"
